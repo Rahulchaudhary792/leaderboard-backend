@@ -1,4 +1,4 @@
 import mongoose from 'mongoose';
-mongoose.connect('mongodb://127.0.0.1:27017/leaderboard')
+mongoose.connect('mongodb+srv://kushalbharadwaj68:IuP6486Y1oPZzuW4@leaderboard.vpfej.mongodb.net/leaderboard?retryWrites=true&w=majority&appName=leaderboard')
   .then(() => console.log('MongoDB connected'))
   .catch(err => console.log(err));
