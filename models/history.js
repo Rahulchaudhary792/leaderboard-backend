@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+import mongoose from 'mongoose';
 const History = mongoose.model('History', new mongoose.Schema({
 	user: String,
 	points: Number,
