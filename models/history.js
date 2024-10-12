@@ -4,4 +4,4 @@ const History = mongoose.model('History', new mongoose.Schema({
 	points: Number,
 	date: { type: Date, default: Date.now }
 }));
-module.exports = History;
+export default History;
