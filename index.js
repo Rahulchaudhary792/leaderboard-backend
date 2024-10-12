@@ -1,16 +1,12 @@
-const express = require('express');
-const mongoose = require('mongoose');
-const cors = require('cors');
+import express from 'express';
+import mongoose from 'mongoose';
+import cors from 'cors';
 const app = express();
 app.use(express.json());
 app.use(cors());
-const http = require('http');
-const socketIo = require('socket.io');
-const server = http.createServer(app);
-const io = socketIo(server);
-require('./models/database.js');
-const User = require('./models/users.js');
-const History = require('./models/history.js');
+import './models/database.js';
+import User from './models/users.js';
+import History from './models/history.js';
 app.get('/api/users', async (req, res) => {
   const users = await User.find().sort({ points: -1 });
   res.json(users);
@@ -30,7 +26,6 @@ app.post('/api/claim', async (req, res) => {
   const name = user.name;
   const history = new History({ user: name, points: randomPoints });
   await history.save();
-  io.emit('update-history', history);
   res.json({ user, points: randomPoints });
 });
 app.get('/api/history', async (req, res) => {
